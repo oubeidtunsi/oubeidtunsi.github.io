@@ -140,19 +140,22 @@
 
     /* Avatar circolare con iniziali, modificabile facilmente con una tua foto in futuro. */
     .avatar {
-      width: 172px;
-      height: 172px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       margin: 0 auto 22px;
-      display: grid;
-      place-items: center;
-      font-size: 3.2rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: white;
-      background: linear-gradient(135deg, rgba(94, 160, 255, 0.85), rgba(126, 240, 192, 0.72));
+      overflow: hidden;
       border: 6px solid rgba(255, 255, 255, 0.08);
       box-shadow: 0 18px 38px rgba(0, 0, 0, 0.32);
+    }
+
+    /* Stile immagine profilo. */
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+      display: block;
     }
 
     /* Nome principale. */
@@ -206,13 +209,6 @@
       background: linear-gradient(135deg, var(--accent), #7a7bff);
       color: white;
       box-shadow: 0 10px 24px rgba(94, 160, 255, 0.26);
-    }
-
-    /* Variante secondaria del pulsante. */
-    .button-secondary {
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--text);
-      border-color: var(--border);
     }
 
     /* Feedback hover dei pulsanti. */
@@ -452,7 +448,9 @@
       <!-- Card principale con intro, avatar e call to action. -->
       <div class="hero-card">
         <!-- Avatar con iniziali. In futuro puoi sostituirlo con una tua foto. -->
-        <div class="avatar">OG</div>
+        <div class="avatar">
+          <img src="immagine.png" alt="Oubeidllah Guirat" class="profile-image">
+        </div>
         <!-- Nome principale. -->
         <h1>Oubeidllah Guirat</h1>
         <!-- Ruolo professionale principale. -->
@@ -461,12 +459,14 @@
         <div class="hero-subtitle">Frontend Developer • React • JavaScript • REST API • Background tecnico-industriale</div>
         <!-- Pulsanti principali. -->
         <div class="hero-actions">
+          <!-- Bottone download CV. -->
+          <a class="button button-primary" href="Oubeidllah_Guirat_CV.pdf" download>CV</a>
+          <!-- Bottone LinkedIn reale. -->
+          <a class="button button-primary" href="https://www.linkedin.com/in/oubeidllah-guirat-bab286171/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <!-- Bottone email. -->
+          <a class="button button-primary" href="mailto:guirat42@gmail.com">Email</a>
           <!-- Bottone progetto sezione interna. -->
           <a class="button button-primary" href="#projects">Vedi i progetti</a>
-          <!-- Bottone LinkedIn reale. -->
-          <a class="button button-secondary" href="https://www.linkedin.com/in/oubeidllah-guirat-bab286171/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <!-- Bottone email. -->
-          <a class="button button-secondary" href="mailto:guirat42@gmail.com">Email</a>
         </div>
         <!-- Testo introduttivo. -->
         <p class="hero-copy">
@@ -501,11 +501,11 @@
         <span class="eyebrow">Info rapide</span>
         <!-- Lista informativa sintetica. -->
         <ul class="clean">
-          <li>Sede: Casalgrande (RE), Italia</li>
+          <li>18 Ottobre 2000</li>
+          <li>Casalgrande (RE), Italia</li>
           <li>Email: guirat42@gmail.com</li>
           <li>Telefono: 328 9484409</li>
-          <li>Disponibilità per ruoli junior frontend / software</li>
-          <li>Esperienza in ambienti produttivi ad alta precisione</li>
+          <li>Patente: B</li>
         </ul>
       </div>
     </div>
@@ -579,7 +579,7 @@
             Applicazione frontend con integrazione API REST, componentizzazione UI, stato locale, ricerca prodotti e rendering dinamico delle card.
           </p>
           <div class="project-links">
-            <a class="button button-secondary" href="#contact">Richiedi demo</a>
+            <a class="button button-primary" href="https://github.com/oubeidtunsi/catalogo-prodotti-react" target="_blank" rel="noreferrer">Codice sorgente</a>
           </div>
         </article>
         <!-- Progetto sito attività locale. -->
@@ -601,7 +601,7 @@
             Questo portfolio è pensato per crescere nel tempo con nuovi lavori, repository GitHub, esercitazioni e progetti frontend pubblicati.
           </p>
           <div class="project-links">
-            <a class="button button-secondary" href="#contact">Contattami</a>
+            <a class="button button-primary" href="#contact">Contattami</a>
           </div>
         </article>
       </div>
@@ -639,6 +639,13 @@
             <p>Lavoro su macchinario laser fibra in ambiente industriale di precisione, controllo qualità, ordine della postazione e collaborazione con più reparti.</p>
           </div>
         </div>
+          <div class="timeline-item">
+            <div class="timeline-item-header">
+              <h3>Stage ufficio tecnico - Comune di Casalgrande </h3>
+              <div class="timeline-meta">05/2019 - 09/2019</div>
+            </div>
+            <p>Supporto a computi metrici e rilievi tecnici mediante Excel, AutoCAD e Google Earth in progetti di edilizia pubblica.</p>
+          </div>
       </div>
       <!-- Colonna formazione. -->
       <div class="card">
@@ -650,7 +657,7 @@
               <h3>IFOA - Software Developer con strumenti AI</h3>
               <div class="timeline-meta">In corso</div>
             </div>
-            <p>Percorso orientato a sviluppo web, JavaScript, React, Python, Java, API, database e project work.</p>
+            <p>Percorso orientato a sviluppo web, JavaScript, React, Python, Java, API, database e project work(480 aula e 320 stage).</p>
           </div>
           <div class="timeline-item">
             <div class="timeline-item-header">
@@ -684,8 +691,9 @@
           Per collaborazioni, contatti professionali o opportunità junior puoi scrivermi direttamente.
         </p>
         <div class="hero-actions" style="margin-bottom: 0;">
+          <a class="button button-primary" href="Oubeidllah_Guirat_CV.pdf" download>CV</a>
           <a class="button button-primary" href="mailto:guirat42@gmail.com">Scrivimi via email</a>
-          <a class="button button-secondary" href="https://www.linkedin.com/in/oubeidllah-guirat-bab286171/" target="_blank" rel="noreferrer">Profilo LinkedIn</a>
+          <a class="button button-primary" href="https://www.linkedin.com/in/oubeidllah-guirat-bab286171/" target="_blank" rel="noreferrer">Profilo LinkedIn</a>
         </div>
       </div>
     </div>
