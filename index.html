@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Definizione del set di caratteri per supportare correttamente lettere accentate e simboli. -->
+  <meta charset="UTF-8" />
+  <!-- Impostazione viewport per rendere il sito responsive su mobile, tablet e desktop. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Titolo della pagina mostrato nella scheda del browser. -->
+  <title>Oubeidllah Guirat | Portfolio</title>
+  <!-- Meta descrizione utile per anteprima e SEO di base. -->
+  <meta name="description" content="Portfolio di Oubeidllah Guirat, Junior Software Developer e Frontend Developer con background tecnico-industriale." />
+  <!-- Blocco di stile interno per avere un file unico, facile da caricare su GitHub Pages. -->
+  <style>
+    /* Variabili colore principali per mantenere coerenza grafica in tutto il sito. */
+    :root {
+      --bg: #0b1220;
+      --bg-soft: #111a2b;
+      --panel: rgba(17, 26, 43, 0.78);
+      --panel-strong: rgba(20, 31, 51, 0.95);
+      --text: #eef2ff;
+      --muted: #b6c2dd;
+      --accent: #5ea0ff;
+      --accent-2: #7ef0c0;
+      --border: rgba(255, 255, 255, 0.08);
+      --shadow: 0 20px 45px rgba(0, 0, 0, 0.28);
+      --radius: 24px;
+      --max: 1120px;
+    }
+
+    /* Reset leggero per evitare spaziature impreviste del browser. */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Impostazioni globali del documento. */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Stile generale del body con sfondo scuro sfumato. */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(94, 160, 255, 0.18), transparent 30%),
+        radial-gradient(circle at right, rgba(126, 240, 192, 0.14), transparent 25%),
+        linear-gradient(180deg, #08101c 0%, #0b1220 100%);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* Rende più leggibili link e pulsanti. */
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Contenitore principale centrato con larghezza massima. */
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    /* Barra di navigazione fissa in alto. */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(8, 16, 28, 0.72);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Contenuto interno della navbar. */
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    /* Logo testuale del portfolio. */
+    .brand {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    /* Lista dei link della navbar. */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Aspetto dei link di navigazione. */
+    .nav-links a {
+      font-size: 0.95rem;
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    /* Evidenziazione hover dei link della navbar. */
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* Hero principale con grande spazio iniziale come nel sito di riferimento. */
+    .hero {
+      padding: 88px 0 48px;
+    }
+
+    /* Box centrale del contenuto hero. */
+    .hero-card {
+      background: linear-gradient(180deg, rgba(18, 29, 47, 0.92), rgba(12, 20, 35, 0.92));
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      padding: 40px 28px 34px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Piccolo bagliore decorativo dietro il box hero. */
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(94, 160, 255, 0.18), transparent 60%);
+      top: -110px;
+      left: -70px;
+      pointer-events: none;
+    }
+
+    /* Avatar circolare con iniziali, modificabile facilmente con una tua foto in futuro. */
+    .avatar {
+      width: 172px;
+      height: 172px;
+      border-radius: 50%;
+      margin: 0 auto 22px;
+      display: grid;
+      place-items: center;
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: white;
+      background: linear-gradient(135deg, rgba(94, 160, 255, 0.85), rgba(126, 240, 192, 0.72));
+      border: 6px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.32);
+    }
+
+    /* Nome principale. */
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    /* Titolo professionale principale. */
+    .hero-role {
+      font-size: clamp(1.15rem, 2.2vw, 1.65rem);
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: white;
+    }
+
+    /* Sottotitolo descrittivo. */
+    .hero-subtitle {
+      color: var(--muted);
+      font-size: 1.02rem;
+      margin-bottom: 22px;
+    }
+
+    /* Lista di pulsanti/azioni della hero. */
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+
+    /* Stile base dei pulsanti. */
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      cursor: pointer;
+    }
+
+    /* Variante primaria del pulsante. */
+    .button-primary {
+      background: linear-gradient(135deg, var(--accent), #7a7bff);
+      color: white;
+      box-shadow: 0 10px 24px rgba(94, 160, 255, 0.26);
+    }
+
+    /* Variante secondaria del pulsante. */
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    /* Feedback hover dei pulsanti. */
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Testo descrittivo principale nel centro. */
+    .hero-copy {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+
+    /* Sezioni principali del sito. */
+    .section {
+      padding: 28px 0 10px;
+    }
+
+    /* Titolo sezione. */
+    .section-title {
+      font-size: 1.45rem;
+      margin-bottom: 8px;
+    }
+
+    /* Sottotitolo di supporto sezione. */
+    .section-intro {
+      color: var(--muted);
+      margin-bottom: 22px;
+      max-width: 760px;
+    }
+
+    /* Griglia generale di card. */
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    /* Griglia a 3 colonne che si adatta responsivamente. */
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    /* Griglia a 2 colonne che si adatta responsivamente. */
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Card generica per sezioni e contenuti. */
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    /* Etichette piccole sopra i titoli. */
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent-2);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    /* Testo standard delle card. */
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    /* Lista verticale leggibile. */
+    ul.clean {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      padding-left: 0;
+    }
+
+    /* Simbolo visuale prima dei punti elenco personalizzati. */
+    ul.clean li::before {
+      content: "•";
+      color: var(--accent);
+      margin-right: 10px;
+      font-weight: 700;
+    }
+
+    /* Contenitore tag skill. */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Singolo chip skill. */
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.93rem;
+    }
+
+    /* Card progetto con layout verticale. */
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      height: 100%;
+    }
+
+    /* Titolo del progetto. */
+    .project-card h3 {
+      font-size: 1.15rem;
+      line-height: 1.3;
+    }
+
+    /* Box dei link progetto. */
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    /* Timeline minimale per esperienze o formazione. */
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    /* Riga singola della timeline. */
+    .timeline-item {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+    }
+
+    /* Intestazione della timeline. */
+    .timeline-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* Titolo esperienza/formazione. */
+    .timeline-item h3 {
+      font-size: 1.04rem;
+    }
+
+    /* Data/luogo esperienza/formazione. */
+    .timeline-meta {
+      color: var(--accent-2);
+      font-size: 0.92rem;
+      white-space: nowrap;
+    }
+
+    /* Sezione contatti finale. */
+    .contact-box {
+      text-align: center;
+      padding: 30px 24px;
+    }
+
+    /* Footer semplice. */
+    footer {
+      padding: 26px 0 36px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.94rem;
+    }
+
+    /* Adattamento tablet. */
+    @media (max-width: 920px) {
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Adattamento mobile. */
+    @media (max-width: 640px) {
+      .hero {
+        padding-top: 56px;
+      }
+
+      .hero-card {
+        padding: 30px 20px 26px;
+      }
+
+      .avatar {
+        width: 132px;
+        height: 132px;
+        font-size: 2.45rem;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra di navigazione superiore. -->
+  <nav class="nav">
+    <!-- Contenitore navbar. -->
+    <div class="container nav-inner">
+      <!-- Nome/brand del sito. -->
+      <div class="brand">Oubeidllah Guirat</div>
+      <!-- Link di navigazione rapida alle sezioni interne. -->
+      <div class="nav-links">
+        <a href="#about">Chi sono</a>
+        <a href="#skills">Competenze</a>
+        <a href="#projects">Progetti</a>
+        <a href="#experience">Esperienza</a>
+        <a href="#contact">Contatti</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero principale del portfolio. -->
+  <header class="hero">
+    <!-- Contenitore centrale della hero. -->
+    <div class="container">
+      <!-- Card principale con intro, avatar e call to action. -->
+      <div class="hero-card">
+        <!-- Avatar con iniziali. In futuro puoi sostituirlo con una tua foto. -->
+        <div class="avatar">OG</div>
+        <!-- Nome principale. -->
+        <h1>Oubeidllah Guirat</h1>
+        <!-- Ruolo professionale principale. -->
+        <div class="hero-role">Junior Software Developer</div>
+        <!-- Sottotitolo del ruolo. -->
+        <div class="hero-subtitle">Frontend Developer • React • JavaScript • REST API • Background tecnico-industriale</div>
+        <!-- Pulsanti principali. -->
+        <div class="hero-actions">
+          <!-- Bottone progetto sezione interna. -->
+          <a class="button button-primary" href="#projects">Vedi i progetti</a>
+          <!-- Bottone LinkedIn reale. -->
+          <a class="button button-secondary" href="https://www.linkedin.com/in/oubeidllah-guirat-bab286171/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <!-- Bottone email. -->
+          <a class="button button-secondary" href="mailto:guirat42@gmail.com">Email</a>
+        </div>
+        <!-- Testo introduttivo. -->
+        <p class="hero-copy">
+          Sono un Junior Software Developer con formazione in sviluppo web e un background tecnico-industriale.
+          Sto costruendo il mio percorso nel frontend con particolare attenzione a React, JavaScript, integrazione di API REST,
+          struttura dei contenuti e progetti concreti pubblicati online.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sezione chi sono. -->
+  <section class="section" id="about">
+    <!-- Contenitore sezione. -->
+    <div class="container grid grid-2">
+      <!-- Card descrizione personale. -->
+      <div class="card">
+        <!-- Piccola etichetta sezione. -->
+        <span class="eyebrow">Chi sono</span>
+        <!-- Titolo sezione. -->
+        <h2 class="section-title">Un profilo tecnico che sta evolvendo nel software</h2>
+        <!-- Paragrafo descrittivo principale. -->
+        <p>
+          Il mio percorso unisce precisione operativa, lettura dei processi industriali e crescita concreta nello sviluppo software.
+          Le esperienze in produzione mi hanno dato metodo, responsabilità, attenzione ai dettagli e capacità di lavorare in contesti reali.
+          Oggi sto consolidando competenze in sviluppo frontend, componentizzazione, consumo API e creazione di interfacce utili e pulite.
+        </p>
+      </div>
+      <!-- Card informazioni rapide. -->
+      <div class="card">
+        <!-- Piccola etichetta sezione. -->
+        <span class="eyebrow">Info rapide</span>
+        <!-- Lista informativa sintetica. -->
+        <ul class="clean">
+          <li>Sede: Casalgrande (RE), Italia</li>
+          <li>Email: guirat42@gmail.com</li>
+          <li>Telefono: 328 9484409</li>
+          <li>Disponibilità per ruoli junior frontend / software</li>
+          <li>Esperienza in ambienti produttivi ad alta precisione</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sezione competenze tecniche. -->
+  <section class="section" id="skills">
+    <!-- Contenitore sezione. -->
+    <div class="container">
+      <!-- Titolo sezione. -->
+      <h2 class="section-title">Competenze</h2>
+      <!-- Testo introduttivo sezione. -->
+      <p class="section-intro">Tecnologie, strumenti e punti di forza che oggi rappresentano il mio profilo.</p>
+      <!-- Griglia a tre card. -->
+      <div class="grid grid-3">
+        <!-- Card frontend. -->
+        <div class="card">
+          <span class="eyebrow">Frontend</span>
+          <div class="chips">
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">React</span>
+            <span class="chip">Bootstrap</span>
+            <span class="chip">Responsive UI</span>
+          </div>
+        </div>
+        <!-- Card dati e sviluppo. -->
+        <div class="card">
+          <span class="eyebrow">Sviluppo e dati</span>
+          <div class="chips">
+            <span class="chip">REST API</span>
+            <span class="chip">Git</span>
+            <span class="chip">GitHub</span>
+            <span class="chip">Python base</span>
+            <span class="chip">Java base</span>
+            <span class="chip">MySQL</span>
+          </div>
+        </div>
+        <!-- Card plus professionali. -->
+        <div class="card">
+          <span class="eyebrow">Plus professionali</span>
+          <div class="chips">
+            <span class="chip">Problem solving</span>
+            <span class="chip">Processi industriali</span>
+            <span class="chip">Controllo qualità</span>
+            <span class="chip">Documentazione tecnica</span>
+            <span class="chip">Linux</span>
+            <span class="chip">AutoCAD</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sezione progetti software. -->
+  <section class="section" id="projects">
+    <!-- Contenitore sezione. -->
+    <div class="container">
+      <!-- Titolo sezione. -->
+      <h2 class="section-title">Progetti</h2>
+      <!-- Descrizione sezione. -->
+      <p class="section-intro">Una selezione di progetti che mostrano il mio percorso nel web development e la mia capacità di trasformare un’esigenza in una soluzione concreta.</p>
+      <!-- Griglia progetti. -->
+      <div class="grid grid-3">
+        <!-- Progetto catalogo prodotti. -->
+        <article class="card project-card">
+          <span class="eyebrow">React + API</span>
+          <h3>Catalogo prodotti in React + Vite</h3>
+          <p>
+            Applicazione frontend con integrazione API REST, componentizzazione UI, stato locale, ricerca prodotti e rendering dinamico delle card.
+          </p>
+          <div class="project-links">
+            <a class="button button-secondary" href="#contact">Richiedi demo</a>
+          </div>
+        </article>
+        <!-- Progetto sito attività locale. -->
+        <article class="card project-card">
+          <span class="eyebrow">Landing page</span>
+          <h3>Una Zampa per Amico</h3>
+          <p>
+            Landing page pubblicata online per un’attività locale di toelettatura a Sassuolo, con focus su servizi, contatto WhatsApp e conversione.
+          </p>
+          <div class="project-links">
+            <a class="button button-primary" href="https://incredible-sherbet-4340af.netlify.app/" target="_blank" rel="noreferrer">Apri il progetto</a>
+          </div>
+        </article>
+        <!-- Card progetto futuro / GitHub. -->
+        <article class="card project-card">
+          <span class="eyebrow">In crescita</span>
+          <h3>Nuovi progetti in arrivo</h3>
+          <p>
+            Questo portfolio è pensato per crescere nel tempo con nuovi lavori, repository GitHub, esercitazioni e progetti frontend pubblicati.
+          </p>
+          <div class="project-links">
+            <a class="button button-secondary" href="#contact">Contattami</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sezione esperienze principali. -->
+  <section class="section" id="experience">
+    <!-- Contenitore sezione. -->
+    <div class="container grid grid-2">
+      <!-- Colonna esperienza professionale. -->
+      <div class="card">
+        <span class="eyebrow">Esperienza</span>
+        <h2 class="section-title">Percorso professionale</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-item-header">
+              <h3>Capoturno - Piemme</h3>
+              <div class="timeline-meta">06/2025 - 07/2025</div>
+            </div>
+            <p>Coordinamento operativo del turno, monitoraggio qualità e supporto all’organizzazione del lavoro in contesto industriale.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item-header">
+              <h3>Operatore linea C+ - Emilgroup</h3>
+              <div class="timeline-meta">02/2024 - 06/2025</div>
+            </div>
+            <p>Gestione e monitoraggio di impianti industriali ad alta automazione, con attenzione a parametri di processo, qualità e continuità di linea.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item-header">
+              <h3>Addetto taglio laser - Modula</h3>
+              <div class="timeline-meta">06/2023 - 01/2024</div>
+            </div>
+            <p>Lavoro su macchinario laser fibra in ambiente industriale di precisione, controllo qualità, ordine della postazione e collaborazione con più reparti.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Colonna formazione. -->
+      <div class="card">
+        <span class="eyebrow">Formazione</span>
+        <h2 class="section-title">Studio e crescita</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-item-header">
+              <h3>IFOA - Software Developer con strumenti AI</h3>
+              <div class="timeline-meta">In corso</div>
+            </div>
+            <p>Percorso orientato a sviluppo web, JavaScript, React, Python, Java, API, database e project work.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item-header">
+              <h3>UNIMORE - Ingegneria Civile e Ambientale</h3>
+              <div class="timeline-meta">2020 - 2022</div>
+            </div>
+            <p>Percorso universitario con base analitico-matematica e approccio strutturato ai sistemi complessi.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item-header">
+              <h3>I.T.C.G. Baggi - Diploma Geometra</h3>
+              <div class="timeline-meta">2020</div>
+            </div>
+            <p>Formazione tecnica con basi di disegno, precisione operativa, strumenti informatici e approccio progettuale.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sezione contatti finale. -->
+  <section class="section" id="contact">
+    <!-- Contenitore sezione. -->
+    <div class="container">
+      <!-- Card finale di contatto. -->
+      <div class="card contact-box">
+        <span class="eyebrow">Contatti</span>
+        <h2 class="section-title">Parliamo del prossimo progetto</h2>
+        <p class="section-intro" style="margin: 0 auto 18px;">
+          Sto costruendo il mio portfolio per raccontare meglio il mio percorso, i miei progetti e la mia crescita nel software.
+          Per collaborazioni, contatti professionali o opportunità junior puoi scrivermi direttamente.
+        </p>
+        <div class="hero-actions" style="margin-bottom: 0;">
+          <a class="button button-primary" href="mailto:guirat42@gmail.com">Scrivimi via email</a>
+          <a class="button button-secondary" href="https://www.linkedin.com/in/oubeidllah-guirat-bab286171/" target="_blank" rel="noreferrer">Profilo LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer con anno dinamico e nota. -->
+  <footer>
+    <!-- Contenitore footer. -->
+    <div class="container">
+      <!-- Testo footer aggiornato tramite JavaScript. -->
+      <p>© <span id="year"></span> Oubeidllah Guirat • Portfolio personale • Realizzato per GitHub Pages</p>
+    </div>
+  </footer>
+
+  <!-- Script leggero per aggiornare automaticamente l'anno nel footer. -->
+  <script>
+    // Recupera l'elemento span del footer che deve mostrare l'anno corrente.
+    const yearTarget = document.getElementById("year");
+    // Inserisce l'anno corrente preso dalla data di sistema del browser.
+    yearTarget.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
