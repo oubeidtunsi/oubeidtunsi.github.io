@@ -209,6 +209,7 @@
       border: 1px solid transparent;
       transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
       cursor: pointer;
+      font: inherit;
       white-space: nowrap;
     }
 
@@ -229,6 +230,79 @@
       background: linear-gradient(135deg, #78b0ff, #8b8cff);
       border-color: transparent;
       box-shadow: 0 12px 28px rgba(94, 160, 255, 0.32);
+    }
+
+    .cv-picker {
+      position: relative;
+      display: inline-flex;
+      justify-content: center;
+    }
+
+    .cv-picker .button {
+      min-width: 74px;
+    }
+
+    .cv-menu {
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 10px);
+      display: grid;
+      gap: 6px;
+      min-width: 142px;
+      padding: 8px;
+      background: rgba(9, 17, 31, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.34);
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 8px) scale(0.96);
+      transform-origin: bottom center;
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      z-index: 5;
+    }
+
+    .cv-menu::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -6px;
+      width: 10px;
+      height: 10px;
+      background: rgba(9, 17, 31, 0.94);
+      border-right: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .cv-picker.is-open .cv-menu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, 0) scale(1);
+    }
+
+    .cv-option {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      color: var(--text);
+      font-size: 0.82rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid transparent;
+      transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .cv-option:hover,
+    .cv-option:focus-visible {
+      background: rgba(126, 240, 192, 0.12);
+      border-color: rgba(126, 240, 192, 0.28);
+      color: white;
+      outline: none;
     }
 
     /* Testo descrittivo principale nel centro. */
@@ -500,6 +574,11 @@
         padding: 11px 14px;
       }
 
+      .hero .cv-picker,
+      .hero .cv-picker .button {
+        width: 100%;
+      }
+
       .contact-box .hero-actions {
         display: grid;
         grid-template-columns: 1fr;
@@ -509,6 +588,10 @@
       }
 
       .contact-box .button {
+        width: 100%;
+      }
+
+      .contact-box .cv-picker {
         width: 100%;
       }
     }
@@ -540,7 +623,7 @@
       <div class="hero-card">
         <!-- Avatar con foto profilo. -->
         <div class="avatar">
-          <img src="immagine.png.jpg" alt="Oubeidllah Guirat" class="profile-image">
+          <img src="immagine.jpg" alt="Oubeidllah Guirat" class="profile-image">
         </div>
         <!-- Nome principale. -->
         <h1>Oubeidllah Guirat</h1>
@@ -550,8 +633,14 @@
         <div class="hero-subtitle">Web &bull; Backend &bull; REST API &bull; Database &bull; Android &bull; Background industriale</div>
         <!-- Pulsanti principali. -->
         <div class="hero-actions">
-          <!-- Bottone download CV. -->
-          <a class="button button-primary" href="Oubeidllah_Guirat_CV.pdf" download>CV</a>
+          <!-- Menu download CV. -->
+          <div class="cv-picker">
+            <div class="cv-menu" aria-label="Scegli curriculum">
+              <a class="cv-option" href="Oubeidllah_Guirat_CV.pdf" download>CV Italiano</a>
+              <a class="cv-option" href="CV_Oubeidllah_Guirat_eng.pdf" download>CV English</a>
+            </div>
+            <button class="button button-primary cv-toggle" type="button" aria-expanded="false">CV</button>
+          </div>
           <!-- Bottone GitHub reale. -->
           <a class="button button-primary" href="https://github.com/oubeidtunsi" target="_blank" rel="noreferrer">GitHub</a>
           <!-- Bottone LinkedIn reale. -->
@@ -795,16 +884,13 @@
       <!-- Card finale di contatto. -->
       <div class="card contact-box">
         <span class="eyebrow">Contatti</span>
-        <h2 class="section-title">Parliamo del prossimo progetto</h2>
+        <h2 class="section-title">Disponibile per lavori su richiesta</h2>
         <p class="section-intro" style="margin: 0 auto 18px;">
-          Cerco opportunità in ambito sviluppo software, applicazioni web/mobile, backend, database e digitalizzazione aziendale.
-          Sono interessato a contesti tecnici dove poter contribuire a progetti concreti e crescere su soluzioni software orientate al valore.
+          Se ti serve una pagina web, una piccola applicazione, un supporto backend o una soluzione per organizzare meglio dati e processi,
+          posso valutare il progetto e aiutarti a costruire qualcosa di semplice, concreto e su misura.
         </p>
         <div class="hero-actions" style="margin-bottom: 0;">
-          <a class="button button-primary" href="Oubeidllah_Guirat_CV.pdf" download>CV</a>
-          <a class="button button-primary" href="https://github.com/oubeidtunsi" target="_blank" rel="noreferrer">GitHub</a>
           <a class="button button-primary" href="mailto:guirat42@gmail.com">Scrivimi via email</a>
-          <a class="button button-primary" href="https://www.linkedin.com/in/oubeidllah-guirat-bab286171/" target="_blank" rel="noreferrer">Profilo LinkedIn</a>
         </div>
       </div>
     </div>
@@ -815,7 +901,7 @@
     <!-- Contenitore footer. -->
     <div class="container">
       <!-- Testo footer aggiornato tramite JavaScript. -->
-      <p>© <span id="year"></span> Oubeidllah Guirat • Portfolio personale • Realizzato per GitHub Pages</p>
+      <p>© <span id="year"></span> Oubeidllah Guirat • Portfolio personale</p>
     </div>
   </footer>
 
@@ -825,6 +911,46 @@
     const yearTarget = document.getElementById("year");
     // Inserisce l'anno corrente preso dalla data di sistema del browser.
     yearTarget.textContent = new Date().getFullYear();
+
+    const cvPickers = document.querySelectorAll(".cv-picker");
+
+    cvPickers.forEach((picker) => {
+      const toggle = picker.querySelector(".cv-toggle");
+
+      toggle.addEventListener("click", () => {
+        const shouldOpen = !picker.classList.contains("is-open");
+
+        cvPickers.forEach((item) => {
+          item.classList.remove("is-open");
+          item.querySelector(".cv-toggle").setAttribute("aria-expanded", "false");
+        });
+
+        picker.classList.toggle("is-open", shouldOpen);
+        toggle.setAttribute("aria-expanded", String(shouldOpen));
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (event.target.closest(".cv-picker")) {
+        return;
+      }
+
+      cvPickers.forEach((picker) => {
+        picker.classList.remove("is-open");
+        picker.querySelector(".cv-toggle").setAttribute("aria-expanded", "false");
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") {
+        return;
+      }
+
+      cvPickers.forEach((picker) => {
+        picker.classList.remove("is-open");
+        picker.querySelector(".cv-toggle").setAttribute("aria-expanded", "false");
+      });
+    });
   </script>
 </body>
 </html>
