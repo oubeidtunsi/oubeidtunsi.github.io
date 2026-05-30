@@ -8,7 +8,7 @@
   <!-- Titolo della pagina mostrato nella scheda del browser. -->
   <title>Oubeidllah Guirat | Portfolio</title>
   <!-- Meta descrizione utile per anteprima e SEO di base. -->
-  <meta name="description" content="Portfolio di Oubeidllah Guirat, Junior Software Developer e Frontend Developer con background tecnico-industriale." />
+  <meta name="description" content="Portfolio di Oubeidllah Guirat, Software Developer operativo su web, backend, database, Android e digitalizzazione aziendale." />
   <!-- Blocco di stile interno per avere un file unico, facile da caricare su GitHub Pages. -->
   <style>
     /* Variabili colore principali per mantenere coerenza grafica in tutto il sito. */
@@ -19,6 +19,7 @@
       --panel-strong: rgba(20, 31, 51, 0.95);
       --text: #eef2ff;
       --muted: #b6c2dd;
+      --primary: #5ea0ff;
       --accent: #5ea0ff;
       --accent-2: #7ef0c0;
       --border: rgba(255, 255, 255, 0.08);
@@ -39,7 +40,7 @@
       scroll-behavior: smooth;
     }
 
-    /* Stile generale del body con sfondo scuro sfumato. */
+    /* Stile generale del body con sfondo blu scuro metallizzato. */
     body {
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
@@ -49,6 +50,7 @@
         linear-gradient(180deg, #08101c 0%, #0b1220 100%);
       min-height: 100vh;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     /* Rende più leggibili link e pulsanti. */
@@ -71,6 +73,7 @@
       backdrop-filter: blur(14px);
       background: rgba(8, 16, 28, 0.72);
       border-bottom: 1px solid var(--border);
+      box-shadow: none;
     }
 
     /* Contenuto interno della navbar. */
@@ -87,6 +90,7 @@
       font-size: 1rem;
       font-weight: 700;
       letter-spacing: 0.04em;
+      color: var(--text);
     }
 
     /* Lista dei link della navbar. */
@@ -109,9 +113,11 @@
       color: var(--text);
     }
 
-    /* Hero principale con grande spazio iniziale come nel sito di riferimento. */
+    /* Hero principale con grande spazio iniziale come nel sito originale. */
     .hero {
       padding: 88px 0 48px;
+      background: transparent;
+      border-bottom: 0;
     }
 
     /* Box centrale del contenuto hero. */
@@ -163,6 +169,7 @@
       font-size: clamp(2rem, 4vw, 3.1rem);
       line-height: 1.1;
       margin-bottom: 10px;
+      color: var(--text);
     }
 
     /* Titolo professionale principale. */
@@ -200,20 +207,28 @@
       border-radius: 999px;
       font-weight: 700;
       border: 1px solid transparent;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
       cursor: pointer;
+      white-space: nowrap;
     }
 
     /* Variante primaria del pulsante. */
     .button-primary {
       background: linear-gradient(135deg, var(--accent), #7a7bff);
       color: white;
+      border-color: transparent;
       box-shadow: 0 10px 24px rgba(94, 160, 255, 0.26);
     }
 
     /* Feedback hover dei pulsanti. */
     .button:hover {
       transform: translateY(-2px);
+    }
+
+    .button-primary:hover {
+      background: linear-gradient(135deg, #78b0ff, #8b8cff);
+      border-color: transparent;
+      box-shadow: 0 12px 28px rgba(94, 160, 255, 0.32);
     }
 
     /* Testo descrittivo principale nel centro. */
@@ -284,6 +299,10 @@
       color: var(--muted);
     }
 
+    .card p + p {
+      margin-top: 12px;
+    }
+
     /* Lista verticale leggibile. */
     ul.clean {
       list-style: none;
@@ -339,6 +358,11 @@
       margin-top: auto;
     }
 
+    .project-tech .chip {
+      font-size: 0.84rem;
+      padding: 6px 10px;
+    }
+
     /* Timeline minimale per esperienze o formazione. */
     .timeline {
       display: grid;
@@ -387,6 +411,8 @@
       color: var(--muted);
       text-align: center;
       font-size: 0.94rem;
+      border-top: 0;
+      margin-top: 0;
     }
 
     /* Adattamento tablet. */
@@ -402,12 +428,22 @@
 
     /* Adattamento mobile. */
     @media (max-width: 640px) {
+      .container {
+        width: min(calc(100% - 32px), var(--max));
+      }
+
       .hero {
         padding-top: 56px;
       }
 
       .hero-card {
-        padding: 30px 20px 26px;
+        width: 100%;
+        max-width: 100%;
+        padding: 30px 16px 26px;
+      }
+
+      .hero h1 {
+        font-size: clamp(1.75rem, 7vw, 2.05rem);
       }
 
       .avatar {
@@ -419,6 +455,61 @@
       .nav-inner {
         flex-direction: column;
         align-items: flex-start;
+      }
+
+      .nav-links {
+        width: 100%;
+        gap: 8px 14px;
+      }
+
+      .nav-links a {
+        font-size: 0.9rem;
+      }
+
+      .hero-role {
+        font-size: 1.08rem;
+        line-height: 1.35;
+        max-width: 296px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-subtitle {
+        font-size: 0.96rem;
+        line-height: 1.55;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-copy {
+        max-width: 300px;
+        overflow-wrap: break-word;
+      }
+
+      .hero .hero-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 284px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero .button {
+        width: 100%;
+        padding: 11px 14px;
+      }
+
+      .contact-box .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .contact-box .button {
+        width: 100%;
       }
     }
   </style>
@@ -435,7 +526,7 @@
         <a href="#about">Chi sono</a>
         <a href="#skills">Competenze</a>
         <a href="#projects">Progetti</a>
-        <a href="#experience">Esperienza</a>
+        <a href="#experience">Background</a>
         <a href="#contact">Contatti</a>
       </div>
     </div>
@@ -447,26 +538,32 @@
     <div class="container">
       <!-- Card principale con intro, avatar e call to action. -->
       <div class="hero-card">
-        <!-- Avatar con iniziali. In futuro puoi sostituirlo con una tua foto. -->
+        <!-- Avatar con foto profilo. -->
         <div class="avatar">
-          <img src="immagine.png" alt="Oubeidllah Guirat" class="profile-image">
+          <img src="immagine.png.jpg" alt="Oubeidllah Guirat" class="profile-image">
         </div>
         <!-- Nome principale. -->
         <h1>Oubeidllah Guirat</h1>
         <!-- Ruolo professionale principale. -->
-        <div class="hero-role">Junior Developer</div>
-       
+        <div class="hero-role">Software Developer | Web, Backend, Database, Android</div>
+        <!-- Sottotitolo del ruolo. -->
+        <div class="hero-subtitle">Web &bull; Backend &bull; REST API &bull; Database &bull; Android &bull; Background industriale</div>
         <!-- Pulsanti principali. -->
         <div class="hero-actions">
           <!-- Bottone download CV. -->
-          <a class="button button-primary" href="https://github.com/oubeidtunsi" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="button button-primary" href="Oubeidllah_Guirat_CV.pdf" download>CV</a>
+          <!-- Bottone GitHub reale. -->
+          <a class="button button-primary" href="https://github.com/oubeidtunsi" target="_blank" rel="noreferrer">GitHub</a>
           <!-- Bottone LinkedIn reale. -->
           <a class="button button-primary" href="https://www.linkedin.com/in/oubeidllah-guirat-bab286171/" target="_blank" rel="noreferrer">LinkedIn</a>
           <!-- Bottone email. -->
-          <a class="button button-primary" href="mailto:guirat42@gmail.com?subject=Richiesta%20collaborazione&body=Ciao%20Oubeidllah%20Guirat,%20vorrei%20....">Email</a>
-          <!-- Bottone download CV. -->
-          <a class="button button-primary" href="Oubeidllah_Guirat_CV.pdf" download>CV</a>
+          <a class="button button-primary" href="mailto:guirat42@gmail.com">Email</a>
         </div>
+        <!-- Testo introduttivo. -->
+        <p class="hero-copy">
+          Sviluppo applicazioni web/mobile, backend, API REST e database relazionali, con attenzione a integrazione frontend-backend,
+          gestione dei dati e soluzioni concrete per contesti operativi.
+        </p>
       </div>
     </div>
   </header>
@@ -479,12 +576,18 @@
       <div class="card">
         <!-- Piccola etichetta sezione. -->
         <span class="eyebrow">Chi sono</span>
+        <!-- Titolo sezione. -->
+        <h2 class="section-title">Software Developer operativo</h2>
         <!-- Paragrafo descrittivo principale. -->
         <p>
-          Junior Developer con basi in sviluppo web, programmazione object-oriented, database e integrazione di API.
-          Interesse crescente per software industriale, sistemi e automazione. Arrivo da un percorso pratico, e questo mi ha insegnato a 
-          lavorare con attenzione, responsabilità e costanza. Oggi sto portando questo approccio anche nello sviluppo software, 
-          dove sto crescendo attraverso studio e progetti reali.
+          Software Developer orientato allo sviluppo di applicazioni web/mobile, backend, API REST, database relazionali e integrazione frontend-backend.
+        </p>
+        <p>
+          Mi interessa costruire soluzioni software pratiche, affidabili e orientate al valore, con attenzione alla struttura del codice,
+          alla gestione dei dati e all'esperienza utente.
+        </p>
+        <p>
+          Porto un background industriale concreto, utile per comprendere processi produttivi, qualità, logiche operative e digitalizzazione aziendale.
         </p>
       </div>
       <!-- Card informazioni rapide. -->
@@ -493,8 +596,10 @@
         <span class="eyebrow">Info rapide</span>
         <!-- Lista informativa sintetica. -->
         <ul class="clean">
+          <li>18 Ottobre 2000</li>
           <li>Casalgrande (RE), Italia</li>
-          <li>Madrelingua: italiano, arabo</li>
+          <li>Email: guirat42@gmail.com</li>
+          <li>Telefono: 328 9484409</li>
           <li>Patente: B</li>
         </ul>
       </div>
@@ -508,19 +613,20 @@
       <!-- Titolo sezione. -->
       <h2 class="section-title">Competenze</h2>
       <!-- Testo introduttivo sezione. -->
-      <p class="section-intro">Tecnologie, strumenti e punti di forza che oggi rappresentano il mio profilo.</p>
-      <!-- Griglia a tre card. -->
+      <p class="section-intro">Tecnologie, strumenti e punti di forza organizzati per aree operative.</p>
+      <!-- Griglia competenze. -->
       <div class="grid grid-3">
-        <!-- Card dati e sviluppo. -->
+        <!-- Card backend e database. -->
         <div class="card">
-          <span class="eyebrow">Sviluppo e dati</span>
+          <span class="eyebrow">Backend &amp; Database</span>
           <div class="chips">
             <span class="chip">REST API</span>
-            <span class="chip">OOP</span>
-            <span class="chip">GitHub</span>
-            <span class="chip">Python base</span>
-            <span class="chip">Java base</span>
+            <span class="chip">Python/Flask</span>
+            <span class="chip">SQL</span>
+            <span class="chip">PostgreSQL</span>
             <span class="chip">MySQL</span>
+            <span class="chip">Integrazione frontend-backend</span>
+            <span class="chip">Gestione dati relazionali</span>
           </div>
         </div>
         <!-- Card frontend. -->
@@ -532,19 +638,42 @@
             <span class="chip">JavaScript</span>
             <span class="chip">React</span>
             <span class="chip">Bootstrap</span>
-            <span class="chip">Responsive UI</span>
+            <span class="chip">Responsive design</span>
+            <span class="chip">Consumo API</span>
           </div>
         </div>
-        <!-- Card plus professionali. -->
+        <!-- Card mobile. -->
         <div class="card">
-          <span class="eyebrow">Plus professionali</span>
+          <span class="eyebrow">Mobile</span>
           <div class="chips">
-            <span class="chip">Problem solving</span>
-            <span class="chip">Processi industriali</span>
-            <span class="chip">Controllo qualità</span>
-            <span class="chip">Documentazione tecnica</span>
+            <span class="chip">Java</span>
+            <span class="chip">Android Studio</span>
+            <span class="chip">APK</span>
+            <span class="chip">Integrazione app-backend</span>
+          </div>
+        </div>
+        <!-- Card tools. -->
+        <div class="card">
+          <span class="eyebrow">Tools</span>
+          <div class="chips">
+            <span class="chip">Git</span>
+            <span class="chip">GitHub</span>
+            <span class="chip">VS Code</span>
             <span class="chip">Linux</span>
-            <span class="chip">AutoCAD</span>
+            <span class="chip">Render</span>
+            <span class="chip">Netlify</span>
+            <span class="chip">Postman</span>
+          </div>
+        </div>
+        <!-- Card background industriale. -->
+        <div class="card">
+          <span class="eyebrow">Industrial background</span>
+          <div class="chips">
+            <span class="chip">Processi produttivi</span>
+            <span class="chip">Controllo qualità</span>
+            <span class="chip">Logiche operative di stabilimento</span>
+            <span class="chip">Documentazione tecnica</span>
+            <span class="chip">Problem solving</span>
           </div>
         </div>
       </div>
@@ -557,13 +686,39 @@
     <div class="container">
       <!-- Titolo sezione. -->
       <h2 class="section-title">Progetti</h2>
+      <!-- Descrizione sezione. -->
+      <p class="section-intro">Una selezione di progetti software sviluppati, integrati e pubblicati online.</p>
+      <!-- Griglia progetti. -->
       <div class="grid grid-3">
+        <!-- Progetto piattaforma DropBy. -->
+        <article class="card project-card">
+          <span class="eyebrow">Backend &amp; Mobile Integration</span>
+          <h3>DropBy Platform</h3>
+          <p>
+            Sviluppo e integrazione di una piattaforma digitale composta da app eventi, app gioco Android, backend REST online e database PostgreSQL.
+            Contributo su autenticazione utenti, comunicazione app-backend, leaderboard, richiesta coupon via email, deploy online e test funzionali.
+          </p>
+          <div class="chips project-tech">
+            <span class="chip">Java</span>
+            <span class="chip">Android Studio</span>
+            <span class="chip">Python/Flask</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">REST API</span>
+            <span class="chip">Git/GitHub</span>
+            <span class="chip">Render</span>
+            <span class="chip">Netlify</span>
+          </div>
+          <div class="project-links">
+            <a class="button button-primary" href="https://dropbyencore.netlify.app/" target="_blank" rel="noreferrer">Apri il progetto</a>
+          </div>
+        </article>
         <!-- Progetto catalogo prodotti. -->
         <article class="card project-card">
           <span class="eyebrow">React + API</span>
-          <h3>Catalogo prodotti in React + Vite</h3>
+          <h3>React Product Catalog</h3>
           <p>
-            Applicazione frontend con integrazione API REST, componentizzazione UI, stato locale, ricerca prodotti e rendering dinamico delle card.
+            Applicazione web sviluppata con React e Vite per visualizzare dati provenienti da API esterna, con componenti riutilizzabili,
+            gestione dinamica del catalogo prodotti, layout responsive e styling con Bootstrap/CSS.
           </p>
           <div class="project-links">
             <a class="button button-primary" href="https://github.com/oubeidtunsi/catalogo-prodotti-react" target="_blank" rel="noreferrer">Codice sorgente</a>
@@ -580,77 +735,53 @@
             <a class="button button-primary" href="https://incredible-sherbet-4340af.netlify.app/" target="_blank" rel="noreferrer">Apri il progetto</a>
           </div>
         </article>
-        <!-- Card progetto futuro / GitHub. -->
-        <article class="card project-card">
-          <span class="eyebrow">In crescita</span>
-          <h3>Nuovi progetti in arrivo</h3>
-          <p>
-            Questo portfolio è pensato per crescere nel tempo con nuovi lavori, repository GitHub, esercitazioni e progetti frontend pubblicati.
-          </p>
-          <div class="project-links">
-            <a class="button button-primary" href="#contact">Contattami</a>
-          </div>
-        </article>
       </div>
     </div>
   </section>
 
-  <!-- Sezione esperienze principali. -->
+  <!-- Sezione background e formazione. -->
   <section class="section" id="experience">
     <!-- Contenitore sezione. -->
     <div class="container grid grid-2">
-      <!-- Colonna esperienza professionale. -->
+      <!-- Colonna background industriale. -->
       <div class="card">
-        <span class="eyebrow">Ultime esperienze</span>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-item-header">
-              <h3>Capoturno - Piemme</h3>
-              <div class="timeline-meta">06/2025 - 07/2025</div>
-            </div>
-            <p>Coordinamento operativo del turno, monitoraggio qualità e supporto all’organizzazione del lavoro in contesto industriale.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-header">
-              <h3>Operatore linea C+ - Emilgroup</h3>
-              <div class="timeline-meta">02/2024 - 06/2025</div>
-            </div>
-            <p>Gestione e monitoraggio di impianti industriali ad alta automazione, con attenzione a parametri di processo, qualità e continuità di linea.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-item-header">
-              <h3>Addetto taglio laser - Modula</h3>
-              <div class="timeline-meta">06/2023 - 01/2024</div>
-            </div>
-            <p>Lavoro su macchinario laser fibra in ambiente industriale di precisione, controllo qualità, ordine della postazione e collaborazione con più reparti.</p>
-          </div>
-        </div>
+        <span class="eyebrow">Background industriale</span>
+        <h2 class="section-title">Esperienza operativa in contesti produttivi</h2>
+        <p>
+          Esperienza in contesti produttivi, metalmeccanici e logistici presso Piemme, Emilgroup, Modula, Arcese,
+          Edilizia 2000 e Comune di Casalgrande. Attività di coordinamento turno, conduzione impianti, controllo qualità,
+          taglio laser fibra, logistica, gestione documentale e supporto tecnico.
+        </p>
+        <p>
+          Questa esperienza mi permette di comprendere meglio processi aziendali, flussi operativi, qualità, anomalie e
+          digitalizzazione in contesti industriali.
+        </p>
       </div>
       <!-- Colonna formazione. -->
       <div class="card">
         <span class="eyebrow">Formazione</span>
-        <h2 class="section-title">Studio e crescita</h2>
+        <h2 class="section-title">Formazione tecnica</h2>
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-item-header">
-              <h3>IFOA - Software Developer con strumenti AI</h3>
-              <div class="timeline-meta">In corso</div>
+              <h3>IFOA — Tecnico per la progettazione e lo sviluppo di applicazioni informatiche, Software Developer con strumenti AI</h3>
+              <div class="timeline-meta">2026</div>
             </div>
-            <p>Percorso orientato a sviluppo web, JavaScript, React, Python, Java, API, database e project work(480 aula e 320 stage).</p>
+            <p>Percorso orientato a sviluppo web, JavaScript, React, Python, Java, API, database, Android e sviluppo di una piattaforma applicativa finale in team.</p>
           </div>
           <div class="timeline-item">
             <div class="timeline-item-header">
               <h3>UNIMORE - Ingegneria Civile e Ambientale</h3>
               <div class="timeline-meta">2020 - 2022</div>
             </div>
-            <p>Percorso universitario con base analitico-matematica e approccio strutturato ai sistemi complessi.</p>
+            <p>Percorso universitario con competenze analitico-matematiche e approccio strutturato ai sistemi complessi.</p>
           </div>
           <div class="timeline-item">
             <div class="timeline-item-header">
               <h3>I.T.C.G. Baggi - Diploma Geometra</h3>
               <div class="timeline-meta">2020</div>
             </div>
-            <p>Formazione tecnica con basi di disegno, precisione operativa, strumenti informatici e approccio progettuale.</p>
+            <p>Formazione tecnica in disegno, precisione operativa, strumenti informatici e approccio progettuale.</p>
           </div>
         </div>
       </div>
@@ -664,12 +795,14 @@
       <!-- Card finale di contatto. -->
       <div class="card contact-box">
         <span class="eyebrow">Contatti</span>
-        <h2 class="section-title">Prossimo progetto</h2>
+        <h2 class="section-title">Parliamo del prossimo progetto</h2>
         <p class="section-intro" style="margin: 0 auto 18px;">
-          Sto costruendo il mio portfolio per raccontare meglio il mio percorso, i miei progetti e la mia crescita nel software.
-          Per collaborazioni, contatti professionali o opportunità junior puoi scrivermi direttamente.
+          Cerco opportunità in ambito sviluppo software, applicazioni web/mobile, backend, database e digitalizzazione aziendale.
+          Sono interessato a contesti tecnici dove poter contribuire a progetti concreti e crescere su soluzioni software orientate al valore.
         </p>
         <div class="hero-actions" style="margin-bottom: 0;">
+          <a class="button button-primary" href="Oubeidllah_Guirat_CV.pdf" download>CV</a>
+          <a class="button button-primary" href="https://github.com/oubeidtunsi" target="_blank" rel="noreferrer">GitHub</a>
           <a class="button button-primary" href="mailto:guirat42@gmail.com">Scrivimi via email</a>
           <a class="button button-primary" href="https://www.linkedin.com/in/oubeidllah-guirat-bab286171/" target="_blank" rel="noreferrer">Profilo LinkedIn</a>
         </div>
@@ -682,7 +815,7 @@
     <!-- Contenitore footer. -->
     <div class="container">
       <!-- Testo footer aggiornato tramite JavaScript. -->
-      <p>© <span id="year"></span> Oubeidllah Guirat • Portfolio personale</p>
+      <p>© <span id="year"></span> Oubeidllah Guirat • Portfolio personale • Realizzato per GitHub Pages</p>
     </div>
   </footer>
 
